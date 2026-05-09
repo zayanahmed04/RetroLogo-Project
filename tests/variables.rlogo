@@ -1,0 +1,6 @@
+START
+LET size = 150
+FORWARD size
+RIGHT 90
+FORWARD size
+END

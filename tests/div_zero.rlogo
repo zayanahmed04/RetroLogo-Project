@@ -1,0 +1,3 @@
+START
+LET x = 10 / 0
+END

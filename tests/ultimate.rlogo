@@ -1,0 +1,16 @@
+START
+
+LET x = 20
+
+REPEAT 10 {
+
+    FORWARD x
+    RIGHT 36
+
+    REPEAT 4 {
+        FORWARD 30
+        RIGHT 90
+    }
+}
+
+END

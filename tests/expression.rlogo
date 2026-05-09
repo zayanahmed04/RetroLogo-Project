@@ -1,0 +1,4 @@
+START
+LET x = (10 + 20) * (5 + 2)
+FORWARD x
+END

@@ -1,0 +1,8 @@
+START
+
+REPEAT 1000 {
+    FORWARD 1
+    RIGHT 1
+}
+
+END

@@ -53,7 +53,10 @@ def compile_program(filename, debug=False):
 
 def interactive_mode():
     print("RetroLogo Interactive Mode")
+    print("Type RUN to execute")
     print("Type EXIT to quit")
+
+    lines = []
 
     while True:
         line = input(">>> ")
@@ -61,21 +64,30 @@ def interactive_mode():
         if line.upper() == "EXIT":
             break
 
-        try:
-            code = "START\n" + line + "\nEND"
+        if line.upper() == "RUN":
 
-            tokens = tokenize(code)
-            parser = Parser(tokens)
-            ast = parser.parse()
+            code = "START\n" + "\n".join(lines) + "\nEND"
 
-            semantic = SemanticAnalyzer()
-            semantic.analyze(ast)
+            try:
+                tokens = tokenize(code)
 
-            generator = CodeGenerator(semantic.symbol_table)
-            generator.execute(ast)
+                parser = Parser(tokens)
+                ast = parser.parse()
 
-        except Exception as e:
-            print("ERROR:", e)
+                semantic = SemanticAnalyzer()
+                semantic.analyze(ast)
+
+                generator = CodeGenerator(semantic.symbol_table)
+                generator.execute(ast)
+
+            except Exception as e:
+                print("ERROR:", e)
+
+            lines = []
+
+            continue
+
+        lines.append(line)
 
 if __name__ == "__main__":
     

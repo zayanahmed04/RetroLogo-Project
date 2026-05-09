@@ -26,20 +26,20 @@ def compile_program(filename, debug=False):
     optimized_ir = optimizer.optimize(ir_code)
 
     if debug:
-        print("\\nTOKENS")
+        print("\nTOKENS")
         print(tokens)
 
-        print("\\nAST")
+        print("\nAST")
         print(ast)
 
-        print("\\nSYMBOL TABLE")
+        print("\nSYMBOL TABLE")
         print(semantic.symbol_table)
 
-        print("\\nIR")
+        print("\nIR")
         for ins in ir_code:
             print(ins)
 
-        print("\\nOPTIMIZED IR")
+        print("\nOPTIMIZED IR")
         for ins in optimized_ir:
             print(ins)
 
@@ -73,6 +73,7 @@ def interactive_mode():
             print("ERROR:", e)
 
 if __name__ == "__main__":
+    
     argparser = argparse.ArgumentParser()
 
     argparser.add_argument("file", nargs='?')

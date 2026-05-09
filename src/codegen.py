@@ -4,8 +4,11 @@ import turtle
 class CodeGenerator:
     def __init__(self, symbols):
         self.symbols = symbols
+
         self.t = turtle.Turtle()
+
         self.screen = turtle.Screen()
+        self.screen.title("RetroLogo Compiler Output")
 
     def eval_expr(self, expr):
         if isinstance(expr, int):

@@ -12,21 +12,21 @@ class SemanticAnalyzer:
 
         if kind == 'LET':
             name = node[1]
-            value = self.eval_expr(node[2])
-            self.symbol_table[name] = value
+            self.check_expr(node[2])
+            self.symbol_table[name] = 'INT'
 
         elif kind in ['FORWARD', 'BACKWARD', 'LEFT', 'RIGHT', 'CIRCLE']:
-            self.eval_expr(node[1])
+            self.check_expr(node[1])
 
         elif kind == 'REPEAT':
-            self.eval_expr(node[1])
+            self.check_expr(node[1])
 
             for stmt in node[2]:
                 self.visit(stmt)
 
-    def eval_expr(self, expr):
+    def check_expr(self, expr):
         if isinstance(expr, int):
-            return expr
+            return
 
         if expr[0] == 'VAR':
             name = expr[1]
@@ -34,22 +34,7 @@ class SemanticAnalyzer:
             if name not in self.symbol_table:
                 raise NameError(f"Undefined variable '{name}'")
 
-            return self.symbol_table[name]
+            return
 
-        op = expr[0]
-        left = self.eval_expr(expr[1])
-        right = self.eval_expr(expr[2])
-
-        if op == 'PLUS':
-            return left + right
-
-        if op == 'MINUS':
-            return left - right
-
-        if op == 'MUL':
-            return left * right
-
-        if op == 'DIV':
-            if right == 0:
-                raise ZeroDivisionError("Division by zero")
-            return left // right
+        self.check_expr(expr[1])
+        self.check_expr(expr[2])

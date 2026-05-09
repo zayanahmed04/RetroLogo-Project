@@ -31,6 +31,8 @@ class CodeGenerator:
             return left * right
 
         if op == 'DIV':
+            if right == 0:
+                raise ZeroDivisionError("Division by zero")
             return left // right
 
     def execute(self, ast):

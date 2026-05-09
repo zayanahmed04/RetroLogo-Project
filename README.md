@@ -30,7 +30,7 @@ The compiler demonstrates:
 
 ## Installation
 
-Install Python 3.
+Install Python 3 with Tk support (required for the turtle graphics window).
 
 Clone repository:
 
@@ -41,6 +41,8 @@ git clone https://github.com/retro-logo/compiler.git
 ## Running Programs
 
 python src/compiler.py tests/square.rlogo
+
+(Run from the project root. The compiler adjusts sys.path automatically.)
 
 ---
 

@@ -1,5 +1,10 @@
 
 import argparse
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from lexer import tokenize
 from parser import Parser
 from semantic import SemanticAnalyzer
@@ -57,7 +62,7 @@ def interactive_mode():
             break
 
         try:
-            code = "START\\n" + line + "\\nEND"
+            code = "START\n" + line + "\nEND"
 
             tokens = tokenize(code)
             parser = Parser(tokens)
